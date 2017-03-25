@@ -1,0 +1,41 @@
+1. Panel which shows the number of applicants, number of unlocks. - 1 day
+	- Job application api needs to return the total number of applicants.
+	- Job application api needs to return total number of unlocks. (reports)
+
+2. Candidate card - this is mostly similar to what we have on the search candidates page for db monetization. - 2 days
+	Additionally, we have
+		- Date of job application
+		- Link to the resume
+		- Link to the profile
+		- To PM - how do you define someone who's actively looking?
+
+3. Filters (left panel)- We need to use the filter service interface which was written for candidates search and write an implementation for candidates page. We need to write a generator for the query params from the list of current filters. - 2 days
+	- Filter candidates who are "New Applicants" (To PM - Does this mean people who have not been liked or rejected?)
+	- Filter all candidates who have been unlocked.
+	- Filter all candidates who have been interviewed.
+	- Filter all candidates who have been offered.
+	- Filter all candidates who have been rejected.
+	- To PM - Is Liked = Offered + Interviewed + Unlocked candates who are not rejected?. We do not store all candidates who've been liked.
+	- 
+
+4. Sorting - Need to write a reusable inteface for sorting items. A generator to generate the query string for sort + direction. Write the component - 1 day.
+
+5. Filter by candidates who were invited by me - 2 days if we can use unknown, or else need to discuss with PM to check if migration is necessary.
+	- Need to figure out if we can use unknown job application source. To do this, we need to turn it off for invited candidates for a few days and then see if anything else is setting it to unknown.
+	- If we cannot use "unknown", then we need to set a new source and think about migration etc.
+
+6. Safety tips - 1 / 2 day
+
+7. Transitions - 
+
+	Paid jobs 
+		1. "Like" should unlock a candidate, so we need to update the unlocked number. Candidate needs to move to the "liked" candidates filter. Need to generate lead assist number. 1 day
+		2. "No suitable" needs to reject a candidate. 1/2 day
+		3. Offer should mark the status and move the candidate to the offered filter.  1/2 day
+		4. Schedule interview. 2 days 
+			- To PM - What happens when the interview is scheduled? Where is it shown?
+			- To PM - What does the interview date/time pop up look like?
+
+
+
+

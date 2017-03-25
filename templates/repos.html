@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>{{ result.search_term }}</h1>
+{% if result.repositories | length == 0 %}
+<div>
+	<h1>No results to show</h1>
+</div>
+{% endif %}
+
+{% for repo in result.repositories %}
+<div>
+<h2>{{ loop.index }} {{ repo.full_name }}</h2>
+<h3> Created {{ repo.created_at }}</h3>
+<a href="{{ repo.owner.url }}"><img src="{{ repo.owner.avatar_url }}" alt="avatar" height="42" width="42"/></a>
+{{ repo.owner.login }}
+<h3>LastCommit</h3>
+{{ repo.latest_commit.sha }} {{ repo.latest_commit.message }}  {{ repo.latest_commit.author_name }}
+<hr>
+</div>
+{% endfor %}
+{% endblock %}
